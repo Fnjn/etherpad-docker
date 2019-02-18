@@ -9,13 +9,10 @@ RUN apt-get install -y nodejs
 WORKDIR /root
 Add database.sql .
 RUN /etc/init.d/mysql start && mysql -u root < database.sql
-EXPOSE 3306
 
 RUN git clone --branch master https://github.com/ether/etherpad-lite.git
-WORKDIR /root/etherpad
+WORKDIR /root/etherpad-lite
 Add settings.json .
 EXPOSE 9001
 
-RUN export NODE_ENV=production
-CMD /etc/init.d/mysql start
-CMD bin/run.sh
+CMD /etc/init.d/mysql start && export NODE_ENV=production && bin/run.sh --root
