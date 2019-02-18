@@ -1,21 +1,21 @@
 FROM ubuntu:18.04
+LABEL maintainer="fjzeng@outlook.com"
 
-apt-get update
-curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-apt-get install git -y mysql-server nodejs
+RUN apt-get update
+RUN apt-get install -y git curl gnupg2 apt-utils mysql-server
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN apt-get install -y nodejs
 
-cd ~
-git clone --branch master https://github.com/ether/etherpad-lite.git
+WORKDIR /root
+Add database.sql .
+RUN /etc/init.d/mysql start && mysql -u root < database.sql
+EXPOSE 3306
 
-COPY settings.json etherpad/
+RUN git clone --branch master https://github.com/ether/etherpad-lite.git
+WORKDIR /root/etherpad
+Add settings.json .
+EXPOSE 9001
 
-etherpad/bin
-
-CREATE USER 'etherpaduser'@'localhost' IDENTIFIED BY 'PASSWORD';
-CREATE DATABASE `etherpad_lite_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL PRIVILEGES ON etherpad_lite_db. * TO 'etherpaduser'@'localhost';
-FLUSH PRIVILEGES;
-
-export NODE_ENV=production
-
-plugin https://github.com/ether/ep_mathjax
+RUN export NODE_ENV=production
+CMD /etc/init.d/mysql start
+CMD bin/run.sh
