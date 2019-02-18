@@ -89,7 +89,7 @@
    * See: https://github.com/ether/etherpad-lite/wiki/How-to-use-Etherpad-Lite-with-MySQL
    */
 
-  /*
+  
   "dbType" : "mysql",
   "dbSettings" : {
                    "user"    : "etherpaduser",
@@ -99,7 +99,7 @@
                    "database": "etherpad_lite_db",
                    "charset" : "utf8mb4"
                  },
-  */
+  
 
   /*
    * The default text of a pad
@@ -307,7 +307,7 @@
    *          follow the section "secure your installation" in README.md
    */
 
-  /*
+  
   "users": {
     "admin": {
       // "password" can be replaced with "hash" if you install ep_hash_auth
@@ -320,7 +320,7 @@
       "is_admin": false
     }
   },
-  */
+  
 
   /*
    * Restrict socket.io transport methods
