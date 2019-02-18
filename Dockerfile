@@ -1,10 +1,8 @@
 FROM ubuntu:18.04
 LABEL maintainer="fjzeng@outlook.com"
 
-RUN apt-get update
-RUN apt-get install -y git curl gnupg2 apt-utils mysql-server
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
-RUN apt-get install -y nodejs
+RUN apt-get update && apt-get install -y git curl gnupg2 apt-utils mysql-server
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
 
 WORKDIR /root
 Add database.sql .

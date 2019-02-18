@@ -1,10 +1,25 @@
-# etherpad-docker
-[Etherpad Lite](http://etherpad.org/) Image with built-in MySQL. NOT AN OFFICIAL IMAGE.<br/>
+##*[Etherpad Lite](http://etherpad.org/) Image with built-in MySQL. 
+*NOT AN OFFICIAL IMAGE.*<br/>
 
 
-Repo: github.com/Fnjn/etherpad-docker<br/>
+### Pull from DockerHub
+```bash
+docker pull fnjn/etherpad:latest
+docker run -d -p 80:9001 etherpad:latest
+```
+<br/>
 
-run Fnjn/etherpad:latest -d  -p 9001:80
+### Build from Dockerfile
+```bash
+git clone git@github.com:Fnjn/etherpad-docker.git
+cd etherpad-docker
+docker build . -t etherpad:latest
+docker run -d -p 80:9001 etherpad:latest
+```
+<br/>
 
+### Configuration
+Configure Etherpad Setting in `settings.json` or `your_ip_addr/admin/settings`
+Configure MySQL setting in `database.sql`
 
-Report problem to GitHub repo issue page.<br/>
+Report any problem to issue page.<br/>
