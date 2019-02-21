@@ -19,5 +19,6 @@ docker run -d -p 80:9001 etherpad:latest
 ### Configuration
 Configure Etherpad Setting in `settings.json` or `your_ip_addr/admin/settings`.<br/>
 Configure MySQL setting in `database.sql`.<br/>
+Set etherpad w/ non-development mode `export NODE_ENV=production`.<br/>
 
 Report any problem to issue page.<br/>
